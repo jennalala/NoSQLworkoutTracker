@@ -19,7 +19,7 @@ router.get("/api/workouts", (req, res) => {
 
 // Route to find a workout
 router.get("/api/workouts/:id", (req, res) => {
-  db.Workout.findById(req.params.id)
+  db.Workout.findByIdAndUpdate(req.params.id)
     .then((foundWorkouts) => {
       res.json(foundWorkouts);
     })
