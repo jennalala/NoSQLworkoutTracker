@@ -2,7 +2,7 @@ const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 const path = require("path");
-// const Workout = require("./models/workout");
+const Workout = require("./models/workout");
 
 const PORT = process.env.PORT || 8080;
 
