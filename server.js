@@ -1,11 +1,10 @@
-require("dotenv").config();
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
-// const path = require("path");
-const Workout = require("./models/workout");
+const path = require("path");
+// const Workout = require("./models/workout");
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 const app = express();
 
@@ -21,11 +20,17 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workouts", {
   useCreateIndex: true,
 });
 
-const apiRoutes = require("./routes/apiRoutes")(app);
-const indexRoutes = require("./routes/index")(app);
+const connection = mongoose.connection;
+
+connection.on("connected", () => {
+  console.log("Mongoose connected successfully.");
+});
+
+require("./routes/apiRoute")(app);
+require("./routes/index")(app);
 
 // routes
-app.use(require("./routes"));
+
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
