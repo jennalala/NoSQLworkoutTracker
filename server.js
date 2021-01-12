@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const logger = require("morgan");
 const apiRoutes= require("./routes/apiRoute");
-const htmlRoutes = require("./routes/index");
+const htmlRoutes = require("./routes/htmlRoute");
 
 const PORT= process.env.PORT || 8080;
 
@@ -16,8 +16,8 @@ app.use(express.json());
 //Serves Up public Directory
 app.use(express.static("public"));
 
-app.use(./routes/apiRoute);
-app.use(./routes/index);
+app.use();
+app.use();
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", 
 { 
