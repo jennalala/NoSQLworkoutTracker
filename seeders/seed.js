@@ -1,10 +1,9 @@
-require("dotenv").config();
+// require("dotenv").config();
 let mongoose = require("mongoose");
 let db = require("../models");
 
 mongoose.connect(process.env.MONGODB_URI, "mongodb://localhost/workouts", {
   useNewUrlParser: true,
-  useFindAndModify: false,
   useFindAndModify: false,
   useCreateIndex: true,
 });
