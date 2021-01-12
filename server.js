@@ -16,8 +16,8 @@ app.use(express.json());
 //Serves Up public Directory
 app.use(express.static("public"));
 
-app.use(apiRoutes);
-app.use(htmlRoutes);
+require('./routes/apiRoute')(app);
+require('./routes/index')(app);
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { 
 useNewUrlParser: true,
